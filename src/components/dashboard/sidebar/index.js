@@ -15,7 +15,7 @@ const Sidebar = ({ handleClose, show }) => {
 
   return (
     <>
-      <Offcanvas className="w-25" show={show} onHide={handleClose}>
+      <Offcanvas className="" show={show} onHide={handleClose}>
         <Offcanvas.Header className="bg-light" closeButton>
           <div className="w-100">
             <Offcanvas.Title className="text-center">goBilling</Offcanvas.Title>

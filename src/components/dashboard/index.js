@@ -7,6 +7,7 @@ import { Container } from "react-bootstrap";
 import OrderReveiw from "./order-Reveiw";
 import AddCustomer from "./add-customer";
 import { AppContext } from "../../App";
+import "./dashboard.css";
 
 const Dashboard = () => {
   const [show, setShow] = useState(false);
@@ -21,19 +22,16 @@ const Dashboard = () => {
       <Header handleShow={handleShow} />
       <Sidebar handleClose={handleClose} show={show} />
       <Container
-        className="d-flex justify-content-between bg-light p-3 rounded text-primary "
+        className="d-flex justify-content-between bg-light rounded text-primary p-3 mt-5"
         onClick={() => setModalShow(true)}
         style={{ cursor: "pointer" }}
       >
         <span className="d-flex align-items-center">
-          <FaUserCircle
-            className="me-2"
-            style={{ width: "25px", height: "25px" }}
-          />
+          <FaUserCircle className="icon-size me-2" />
           <span className="fs-5">{user.email}</span>
         </span>
         <AddCustomer show={modalShow} onHide={() => setModalShow(false)} />
-        <IoAddCircleOutline style={{ width: "30px", height: "30px" }} />
+        <IoAddCircleOutline className="icon-size" />
       </Container>
       <AddCustomer show={modalShow} onHide={() => setModalShow(false)} />
       <OrderReveiw />

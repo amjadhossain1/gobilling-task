@@ -3,9 +3,11 @@ import { Button, Col, Container, Form, ListGroup, Row } from "react-bootstrap";
 import { BsCash } from "react-icons/bs";
 import { AiOutlineCreditCard, AiOutlineUser } from "react-icons/ai";
 import { AppContext } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 const OrderPayment = () => {
   const { Payment, setPayment } = useContext(AppContext);
+  let navigate = useNavigate();
 
   const payItem = [
     { title: "Cash", icon: <BsCash /> },
@@ -27,7 +29,7 @@ const OrderPayment = () => {
               {payItem.map((element) => {
                 const { title, icon } = element;
                 return (
-                  <ListGroup.Item className="border-0 p-3">
+                  <ListGroup.Item key={title} className="border-0 p-3">
                     <div className="d-flex">
                       <span className="d-flex align-items-center me-3">
                         {icon}
@@ -66,7 +68,11 @@ const OrderPayment = () => {
                 placeholder="Card Screet"
                 required
               />
-              <Button variant="primary" type="submit">
+              <Button
+                variant="primary"
+                type="submit"
+                onClick={() => navigate("/dashboard")}
+              >
                 Submit
               </Button>
             </Form>

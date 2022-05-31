@@ -1,11 +1,6 @@
 import "./App.css";
 import Home from "./components/home";
-import {
-  Routes,
-  Route,
-  useLocation,
-  Navigate,
-} from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Dashboard from "./components/dashboard";
 import OrderPayment from "./components/order-payment";
 import { createContext, useState } from "react";
@@ -28,48 +23,54 @@ function App() {
   }
 
   return (
-    <div className="">
-      <AppContext.Provider
-        value={{ cart, setCart, Payment, setPayment, user, setUser }}
-      >
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <RequireAuth>
-                <Home />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/dashboard"
-            element={
-              <RequireAuth>
-                <Dashboard />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/pay-now"
-            element={
-              <RequireAuth>
-                <OrderPayment />
-              </RequireAuth>
-            }
-          />
-          <Route path="/login" element={<Login />} />
+    <AppContext.Provider
+      value={{ cart, setCart, Payment, setPayment, user, setUser }}
+    >
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <RequireAuth>
+              <Home />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/home"
+          element={
+            <RequireAuth>
+              <Home />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/pay-now"
+          element={
+            <RequireAuth>
+              <OrderPayment />
+            </RequireAuth>
+          }
+        />
+        <Route path="/login" element={<Login />} />
 
-          <Route
-            path="*"
-            element={
-              <div className="text-center m-auto mt-5 fs-4">
-                There's nothing here: 404!
-              </div>
-            }
-          />
-        </Routes>
-      </AppContext.Provider>
-    </div>
+        <Route
+          path="*"
+          element={
+            <div className="text-center m-auto mt-5 fs-4">
+              There's nothing here: 404!
+            </div>
+          }
+        />
+      </Routes>
+    </AppContext.Provider>
   );
 }
 

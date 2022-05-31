@@ -20,8 +20,7 @@ const Header = ({ setSearchTerm }) => {
         <Form className="d-flex">
           <div>
             <AiOutlineSearch
-              style={{ width: "30px", height: "auto" }}
-              className="me-1"
+              className="icon-size  me-1"
             />
           </div>
           <FormControl
@@ -41,22 +40,22 @@ const Header = ({ setSearchTerm }) => {
             className="d-flex align-items-center  px-3 mx-1"
             variant="primary"
           >
-            Order Revew{" "}
-             <BsFillCartCheckFill className="ms-2" style={{ width: "20px", height: "20px" }} />(
-            {cart.length})
+            <span className="order-revew">Order Revew</span>
+            <BsFillCartCheckFill className="icon-size ms-2" />({cart.length})
           </Button>
         </Link>
-
-        <Button
-          className=" px-3 mx-1"
-          variant={"outline-primary"}
-          onClick={() => {
-            setUser(null);
-            navigate("/");
-          }}
-        >
-          {user ? " Sign out" : "Login"}
-        </Button>
+        {user && (
+          <Button
+            className=" px-3 mx-1"
+            variant={"outline-primary"}
+            onClick={() => {
+              setUser(null);
+              navigate("/");
+            }}
+          >
+            Sign out
+          </Button>
+        )}
       </Container>
     </Navbar>
   );

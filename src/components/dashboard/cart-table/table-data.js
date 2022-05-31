@@ -4,7 +4,7 @@ import { MdDeleteForever } from "react-icons/md";
 import { AppContext } from "../../../App";
 
 const TableData = ({ product, handleDelete, quantity, index, setTotal }) => {
-  const { cart, setCart } = useContext(AppContext);
+  const { cart } = useContext(AppContext);
   const [quantityIndex, setQuantityIndex] = useState(1);
   const { name, price, key } = product;
 
@@ -25,7 +25,7 @@ const TableData = ({ product, handleDelete, quantity, index, setTotal }) => {
 
   return (
     <tr key={key}>
-      <td className="">{name}</td>
+      <td className="text-truncate">{name}</td>
       <td className="">${price}</td>
       <td className="d-flex align-items-center">
         <AiFillMinusCircle

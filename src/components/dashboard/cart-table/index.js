@@ -6,7 +6,7 @@ const CartTable = ({ cart, setCart, index, setTotal }) => {
 
 
   const handleDelete = (key) => {
-    const newCart = cart.filter((pd) => pd.key !== key);
+    const newCart = cart.filter((pd) => pd.key !== key);    
     setCart(newCart);
   };
 

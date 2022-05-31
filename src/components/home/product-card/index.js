@@ -8,7 +8,7 @@ const ProductCard = ({ product, handleCart }) => {
       <Card className="text-center  shadow-sm">
         <Card.Img
           variant="top"
-          style={{ height: "10rem" }}
+          style={{ height: "15rem" }}
           className=""
           src={img}
         />

@@ -8,8 +8,12 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../App";
 
 const OrderReveiw = () => {
-  const {cart, setCart, setPayment} = useContext(AppContext);
+  const { cart, setCart, setPayment } = useContext(AppContext);
   const [total, setTotal] = useState(0);
+  //   const [shipping, setShipping] = useState(0);
+  // const [tax, setTax] = useState(0);
+  // const [discount, setDiscount] = useState(0);
+  // const [grandTotal, setGrandTotal] = useState(0);
   let navigate = useNavigate();
 
   const handlePyment = () => {
@@ -26,11 +30,8 @@ const OrderReveiw = () => {
   }
   const tax = total / 10;
   const discount = total / 20;
-  const grandTotal = total + shipping + tax - discount;
-
-  useEffect(() => {
-   setPayment(grandTotal);
-  }, [grandTotal, setPayment]);
+  const grandTotal = (total + shipping + tax - discount).toFixed(2);
+  // setPayment(grandTotal);
   
   return (
     <Container>
@@ -69,22 +70,30 @@ const OrderReveiw = () => {
       </div>
 
       <div className="d-flex justify-content-between my-3">
-        <Button variant="primary" className="d-flex align-items-center px-5">
+        <Button
+          variant="danger"
+          className="d-flex align-items-center px-2"
+          onClick={() => setCart([])}
+        >
           {" "}
           <MdOutlineCancel
-            className="me-4"
+            className="me-2"
             style={{ width: "25px", height: "25px" }}
           />{" "}
           Cancel
         </Button>{" "}
-        <Button variant="secondary" className="icon-size px-5">
-          <FaRegHandRock /> Hold
+        <Button variant="info" className="d-flex align-items-center px-2">
+          <FaRegHandRock className="icon-size me-2" /> Hold
         </Button>{" "}
-        <Button variant="success" className="px-5">
-          <FaHandHoldingUsd /> Discount
+        <Button variant="success" className="d-flex align-items-center px-2">
+          <FaHandHoldingUsd className="icon-size me-2" /> Discount
         </Button>{" "}
-        <Button variant="warning" className="px-5" onClick={handlePyment}>
-          <MdPayment className="" /> Pay Now
+        <Button
+          variant="primary"
+          className="d-flex align-items-center px-2"
+          onClick={handlePyment}
+        >
+          <MdPayment className="icon-size me-2" /> Pay Now
         </Button>{" "}
       </div>
     </Container>

@@ -11,10 +11,9 @@ const Sidebar = () => {
   const handleShow = () => setShow(true);
   return (
     <>
-     
       <BsThreeDotsVertical
-        className=""
-        style={{ width: "25px", height: "25px", cursor: "pointer" }}
+        className="cursor-pointer icon-size"
+        // style={{ width: "25px", height: "25px" }}
         onClick={handleShow}
       />
 

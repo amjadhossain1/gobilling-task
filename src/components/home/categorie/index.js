@@ -5,12 +5,8 @@ import Sidebar from "./sidebar";
 
 const Categorie = ({ element, more, handleCategory, activeCategorie }) => {
   return (
-    <Col md={2} className="">
-      {more ? (
-        <div className="d-flex justify-content-end cursor-pointer">
-          <Sidebar />
-        </div>
-      ) : (
+    <Col md={2} sm={6} className="">
+      <div className="d-flex align-items-center justify-content-between">
         <Button
           className="px-3 mx-1"
           variant={
@@ -22,7 +18,13 @@ const Categorie = ({ element, more, handleCategory, activeCategorie }) => {
         >
           {element}
         </Button>
-      )}
+        {more && (
+          <div className=" d-none-mobile">
+            <Sidebar />
+          </div>
+        )}
+      </div>
+
       {}
     </Col>
   );

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import { AppContext } from "../../App";
 import { categories } from "../../demo-data";
@@ -8,7 +8,7 @@ import Header from "./header";
 import ProductCard from "./product-card";
 
 const Home = () => {
-  const [products, setProducts] = useState(productsData);
+  const [products, setProducts] = useState([]);
   const [filterProduct, setFilterProduct] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategorie, setActiveCategorie] = useState("All Categories");
@@ -16,6 +16,7 @@ const Home = () => {
 
   useEffect(() => {
     setFilterProduct(products);
+    setProducts(productsData);
   }, [products]);
 
   const handleCategory = (categorie) => {
@@ -25,7 +26,6 @@ const Home = () => {
       const categoryProduct = products.filter(
         (product) => product.category === categorie
       );
-
       setFilterProduct(categoryProduct);
     }
     setActiveCategorie(categorie);
@@ -42,32 +42,33 @@ const Home = () => {
     searchTerm ? setActiveCategorie("") : setActiveCategorie("All Categories");
   }, [searchTerm]);
 
-  const handleCart = (product) => {
-    const key = product.key;
+  const handleCart = useCallback(
+    (product) => {
+      const key = product.key;
+      const sameProduct = cart.find((pd) => pd.key === key);
+      let count = 1;
+      let newCart;
 
-    const sameProduct = cart.find((pd) => pd.key === key);
-    let count = 1;
-    let newCart;
-
-    if (sameProduct) {
-      count = sameProduct.quantity + 1;
-      sameProduct.quantity = count;
-      const others = cart.filter((pd) => pd.key !== key);
-      newCart = [...others, sameProduct];
-    } else {
-      product.quantity = 1;
-      newCart = [...cart, product];
-    }
-
-    setCart(newCart);
-  };
+      if (sameProduct) {
+        count = sameProduct.quantity + 1;
+        sameProduct.quantity = count;
+        const others = cart.filter((pd) => pd.key !== key);
+        newCart = [...others, sameProduct];
+      } else {
+        product.quantity = 1;
+        newCart = [...cart, product];
+      }
+      setCart(newCart);
+    },
+    [cart, setCart]
+  );
 
   return (
     <div className="bg-light">
       <Container className="">
         <Header setSearchTerm={setSearchTerm} />
         <Row
-          className=" d-flex align-items-center"
+          className="d-flex align-items-center"
           style={{ padding: "100px 0  50px" }}
         >
           {categories.map((el) => (
