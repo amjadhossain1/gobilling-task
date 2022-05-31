@@ -32,7 +32,7 @@ const OrderReveiw = () => {
   const discount = total / 20;
   const grandTotal = (total + shipping + tax - discount).toFixed(2);
   // setPayment(grandTotal);
-  
+
   return (
     <Container>
       <CartTable
@@ -62,7 +62,7 @@ const OrderReveiw = () => {
         </div>
       </div>
       <div className="d-flex justify-content-between bg-light py-3 rounded text-primary">
-        <span className="">Product Count (4)</span>
+        <span className="">Product Count ({cart.length})</span>
         <div className="w-25 d-flex justify-content-between fw-bold ps-2">
           <span> Total</span>
           <span>${grandTotal}</span>

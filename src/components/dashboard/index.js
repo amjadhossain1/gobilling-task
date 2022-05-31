@@ -15,7 +15,8 @@ const Dashboard = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  console.log('user: ', user);
+  
   return (
     <div>
       <Header handleShow={handleShow} />
@@ -27,7 +28,7 @@ const Dashboard = () => {
       >
         <span className="d-flex align-items-center">
           <FaUserCircle className="icon-size me-2" />
-          <span className="fs-5">{user.email}</span>
+          <span className="fs-5">{user.email}</span> 
         </span>
         <AddCustomer show={modalShow} onHide={() => setModalShow(false)} />
         <IoAddCircleOutline className="icon-size" />

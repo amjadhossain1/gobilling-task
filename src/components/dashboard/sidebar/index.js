@@ -32,7 +32,7 @@ const Sidebar = ({ handleClose, show }) => {
               return (
                 <ListGroup.Item key={title} className="border-0">
                   <div className="d-flex">
-                    <span className="d-flex align-items-center me-3 ">
+                    <span className="d-flex align-items-center icon-size me-3 ">
                       {" "}
                       {icon}
                     </span>{" "}

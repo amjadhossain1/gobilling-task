@@ -4,7 +4,7 @@ import { AppContext } from "../../App";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const Login = () => {
-  const { setUser } = useContext(AppContext);
+  const { user, setUser } = useContext(AppContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const location = useLocation();
@@ -21,6 +21,7 @@ const Login = () => {
     navigate(from, { replace: true });
   };
 
+console.log(email);
   return (
     <div
       style={{ width: "100vw", height: "100vh" }}

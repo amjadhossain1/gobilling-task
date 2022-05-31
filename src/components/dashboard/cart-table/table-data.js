@@ -43,7 +43,7 @@ const TableData = ({ product, handleDelete, quantity, index, setTotal }) => {
       <td>${quantityIndex * price}</td>
       <td className="">
         <span className="text-danger" onClick={() => handleDelete(key)}>
-          <MdDeleteForever />
+          <MdDeleteForever style={{ width: "25px", height: "25px" }} />
         </span>
       </td>
     </tr>
