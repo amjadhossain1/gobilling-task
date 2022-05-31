@@ -7,7 +7,6 @@ import { Container } from "react-bootstrap";
 import OrderReveiw from "./order-Reveiw";
 import AddCustomer from "./add-customer";
 import { AppContext } from "../../App";
-import "./dashboard.css";
 
 const Dashboard = () => {
   const [show, setShow] = useState(false);
