@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import { Button, Container, Form, FormControl, Navbar } from "react-bootstrap";
 import { AiOutlineSearch } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../../App";
 
 const Header = ({ setSearchTerm }) => {
-  const { cart } = useContext(AppContext);
+  const { cart, user, setUser } = useContext(AppContext);
+  let navigate = useNavigate();
+
   return (
     <Navbar
       expand="lg"
@@ -26,9 +28,8 @@ const Header = ({ setSearchTerm }) => {
             placeholder="Search Products..."
             className="border-0"
             aria-label="Search"
-            style={{ width: "55rem" }}
+            style={{ width: "40vw" }}
             onChange={(e) => setSearchTerm(e.target.value)}
-            
           />
         </Form>
         <Link
@@ -39,6 +40,17 @@ const Header = ({ setSearchTerm }) => {
             Order Revew ({cart.length})
           </Button>
         </Link>
+
+        <Button
+          className=" px-3 mx-1"
+          variant={"outline-primary"}
+          onClick={() => {
+            setUser(null);
+            navigate("/");
+          }}
+        >
+          {user ? " Sign out" : "Login"}
+        </Button>
       </Container>
     </Navbar>
   );
