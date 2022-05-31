@@ -34,7 +34,7 @@ console.log(email);
               autoFocus
               type="email"
               placeholder="Email"
-              defaultValue={"admin@techvill.net "}
+              defaultValue={"admin@techvill.net"}
               onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
