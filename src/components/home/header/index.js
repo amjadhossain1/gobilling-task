@@ -1,31 +1,46 @@
-import React from "react";
-import { Container, Form, FormControl, Navbar } from "react-bootstrap";
+import React, { useContext } from "react";
+import { Button, Container, Form, FormControl, Navbar } from "react-bootstrap";
 import { AiOutlineSearch } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import { AppContext } from "../../../App";
 
 const Header = ({ setSearchTerm }) => {
+  const { cart } = useContext(AppContext);
   return (
-    <div>
-      <Navbar expand="lg" variant="light" bg="light">
-        <Container>
-          <Form className="d-flex">
-            <div>
-              <AiOutlineSearch
-                style={{ width: "40px", height: "auto" }}
-                className=""
-              />
-            </div>
-            <FormControl
-              type="search"
-              placeholder="Search Products..."
-              className="border-0"
-              aria-label="Search"
-              style={{ width: "75vw", height: "auto" }}
-              onChange={(e) => setSearchTerm(e.target.value)}
+    <Navbar
+      expand="lg"
+      variant=""
+      bg=""
+      className="fixed-top bg-light shadow-sm"
+    >
+      <Container>
+        <Form className="d-flex">
+          <div>
+            <AiOutlineSearch
+              style={{ width: "30px", height: "auto" }}
+              className="me-1"
             />
-          </Form>
-        </Container>
-      </Navbar>
-    </div>
+          </div>
+          <FormControl
+            type="search"
+            placeholder="Search Products..."
+            className="border-0"
+            aria-label="Search"
+            style={{ width: "55rem" }}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            
+          />
+        </Form>
+        <Link
+          to="/dashboard"
+          className="text-decoration-none d-flex justify-content-end w-25"
+        >
+          <Button className=" px-3 mx-1" variant={"outline-primary"}>
+            Order Revew ({cart.length})
+          </Button>
+        </Link>
+      </Container>
+    </Navbar>
   );
 };
 
