@@ -1,29 +1,25 @@
 import React, { useState, useContext } from "react";
 import { Button, Form } from "react-bootstrap";
 import { AppContext } from "../../App";
-import {
-  useNavigate,
-  useLocation,
-} from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Login = () => {
   const { setUser } = useContext(AppContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  let location = useLocation();
-  let navigate = useNavigate();
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  function validateForm() {
+  const validateForm = () => {
     return email.length > 0 && password.length > 0;
-  }
+  };
 
-  function handleSubmit(event) {
+  let from = location.state?.from?.pathname || "/";
+  const handleSubmit = (event) => {
     event.preventDefault();
     setUser({ email, password });
     navigate(from, { replace: true });
-  }
-
-  let from = location.state?.from?.pathname || "/";
+  };
 
   return (
     <div
@@ -54,7 +50,7 @@ const Login = () => {
             block="true"
             size="lg"
             type="submit"
-            disabled={!validateForm()}
+            // disabled={!validateForm()}
             className="w-100 mt-4"
           >
             Sign in

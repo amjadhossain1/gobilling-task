@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Button, Container, Form, FormControl, Navbar } from "react-bootstrap";
 import { AiOutlineSearch } from "react-icons/ai";
+import { BsFillCartCheckFill } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../../App";
 
@@ -36,8 +37,13 @@ const Header = ({ setSearchTerm }) => {
           to="/dashboard"
           className="text-decoration-none d-flex justify-content-end w-25"
         >
-          <Button className=" px-3 mx-1" variant={"outline-primary"}>
-            Order Revew ({cart.length})
+          <Button
+            className="d-flex align-items-center  px-3 mx-1"
+            variant="primary"
+          >
+            Order Revew{" "}
+             <BsFillCartCheckFill className="ms-2" style={{ width: "20px", height: "20px" }} />(
+            {cart.length})
           </Button>
         </Link>
 
